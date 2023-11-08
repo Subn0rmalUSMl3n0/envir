@@ -1,0 +1,27 @@
+/* Estilos de la barra de navegación */
+nav {
+    background-color: green; /* Color de fondo de la barra de navegación */
+    color: #fff; /* Color del texto */
+    font-size: 18px; /* Tamaño de fuente */
+}
+
+ul {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Elimina el relleno predeterminado */
+    margin: 0; /* Elimina el margen predeterminado */
+    display: flex; /* Muestra los elementos de la lista en línea */
+}
+
+li {
+    margin-right: 20px; /* Espacio entre elementos de la lista */
+}
+
+a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #fff; /* Color del texto del enlace */
+}
+
+/* Cambiar el color del enlace al pasar el cursor sobre él */
+a:hover {
+    color: darkgreen; /* Color del texto del enlace en hover */
+}

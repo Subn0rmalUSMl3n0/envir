@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.izquierda{
+    height: 100vh;
+    width: 50%;
+}
+
+.derecha{
+    background-color: #333;
+    width: 50%;
+    height: 100vh;
+}
+
+#pantalla-div{
+    display: flex;
+}
+
+.row{
+    height: 100%;
+    width: 100%;
+}
+
+.mapa{
+    height: 100%;
+    width: 100%;
+}

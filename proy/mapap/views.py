@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import folium, requests
+from django.template import Template,Context
+from django.http import HttpResponse
 min_lon, max_lon = -76, -65
 min_lat, max_lat = -56, -17
 
@@ -33,3 +35,7 @@ def home (request):
     return render(request,'mapap/home.html', context)
 # Create your views here.
 
+def avistamientos(request):
+    return render(request,'mapap/avistamientos.html')
+def animales(request):
+    return render (request,"mapap/animales.html")

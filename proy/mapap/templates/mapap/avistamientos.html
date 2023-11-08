@@ -1,0 +1,54 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Avistamientos de Animales</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/avistamientos.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css'%}">
+
+</head>
+<body>
+    {% include "mapap/navega.html" %}
+    <header>
+        <h1>Registro de Avistamientos de Animales</h1>
+    </header>
+    
+    <div class="container">
+        <section class="avistamiento-form">
+            <h2>Registrar un Avistamiento</h2>
+            <form>
+                <label for="nombre">Nombre del animal:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="especie">Especie:</label>
+                <input type="text" id="especie" name="especie" required>
+                
+                <label for="fecha">Fecha del avistamiento:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                
+                <label for="ubicacion">Ubicación:</label>
+                <input type="text" id="ubicacion" name="ubicacion" required>
+                
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+                
+                <button type="submit">Registrar Avistamiento</button>
+            </form>
+        </section>
+        
+        <section class="avistamientos-list">
+            <h2>Lista de Avistamientos</h2>
+            <ul>
+                <li>
+                    <h3>Nombre del animal</h3>
+                    <p>Especie: Especie del animal</p>
+                    <p>Fecha del avistamiento: 01/01/2023</p>
+                    <p>Ubicación: Ubicación del avistamiento</p>
+                    <p>Descripción: Descripción del avistamiento</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+    
+</body>
+</html>
