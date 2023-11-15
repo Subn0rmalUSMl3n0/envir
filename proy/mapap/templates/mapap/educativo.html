@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/educativo.css' %}">
+    <title>Sección Educativa</title>
+</head>
+<body>
+    {% include 'mapap/navega.html' %}
+    
+    <header>
+        <h1>Recursos sobre Fauna Chilena</h1>
+    </header>
+
+    <section>
+        <div>
+            <a href="#graficos" class="image-link" onclick="toggleList('graficos')">
+                <h2>Gráficos</h2>
+                <img src="{% static '../static/img/grafico.png' %}" alt="imagen">
+            </a>
+            <ul id="graficos" class="hidden">
+                <li><a href="enlace-a-grafico-1">Gráfico 1</a></li>
+                <li><a href="enlace-a-grafico-2">Gráfico 2</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="#campanas" class="image-link" onclick="toggleList('campanas')">
+                <h2>Campañas</h2>
+                <img src="{% static '../static/img/campaña.png' %}" alt="imagen">
+            </a>
+            <ul id="campanas" class="hidden">
+                <li><a href="enlace-a-campana-1">Campaña 1</a></li>
+                <li><a href="enlace-a-campana-2">Campaña 2</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="#articulos" class="image-link" onclick="toggleList('articulos')">
+                <h2>Artículos Informativos</h2>
+                <img src="{% static '../static/img/articulos.png' %}" alt="imagen">
+            </a>
+            <ul id="articulos" class="hidden">
+                <li><a href="enlace-a-articulo-1">Artículo 1</a></li>
+                <li><a href="enlace-a-articulo-2">Artículo 2</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="#videos" class="image-link" onclick="toggleList('videos')">
+                <h2>Videos</h2>
+                <img src="{% static '../static/img/videos.png' %}" alt="imagen">
+            </a>
+            <ul id="videos" class="hidden">
+                <li><a href="https://www.youtube.com/watch?v=DSgjo4vLN2w">Video 1</a></li>
+                <li><a href="enlace-a-video-2">Video 2</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function toggleList(id) {
+            var list = document.getElementById(id);
+            list.classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>
+

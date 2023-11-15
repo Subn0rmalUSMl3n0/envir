@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section > div {
+    margin: 10px;
+    text-align: center;
+    background-color: #d0fdd7;
+}
+header{
+    background-color: #333;
+}
+
+.image-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.image-link img {
+    max-width: 40%;
+    height: auto;
+}
+
+.hidden {
+    display: none;
+}
+a{
+    color: #333;
+}
