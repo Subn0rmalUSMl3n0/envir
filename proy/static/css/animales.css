@@ -40,3 +40,48 @@ main {
     background-color: #ccc;
     cursor: pointer;
 }
+
+/* Estilos para la tabla de animales y detalles */
+table {
+    border-collapse: collapse;
+    width: 85%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.buscar-form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mostrar-mas {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.detalles {
+    margin-top: 10px;
+}
+
+.detalles img {
+    max-width: 65%;
+    height: auto;
+}
