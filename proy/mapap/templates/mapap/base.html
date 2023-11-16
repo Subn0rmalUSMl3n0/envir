@@ -1,31 +1,32 @@
-{% load static%}
+{% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css'%}">
-    <title>Mapa django test</title>
-  </head>
-  <body>
-  {% include 'mapap/navega.html' %}
-  <section id="pantalla-div">
-    <div class="izquierda">
-      {% block content %}
-      {% endblock %}
-    </div>
-    <div class="derecha">
-      <div class="lista">
-      </div>
-    </div>
-  </section>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css' %}">
+    <style></style>
+    <title>Mapa Django Test</title>
+</head>
+<body>
+    {% include 'mapap/navega.html' %}
+    
+    <section id="pantalla-div">
+        <div class="izquierda">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="derecha">
+            <div class="lista"></div>
+        </div>
+    </section>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+</body>
 </html>

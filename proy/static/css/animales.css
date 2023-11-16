@@ -1,5 +1,5 @@
-/* Estilos generales */
-body {
+
+/* body {
     font-family: Arial, sans-serif;
     background: color #333;;
     margin: 0;
@@ -19,10 +19,10 @@ h1 {
 
 main {
     padding: 20px;
-}
+} */
 
 /* Estilos de la lista de animales */
-.lista-animales {
+/* .lista-animales {
     list-style: none;
     padding: 0;
 }
@@ -39,4 +39,4 @@ main {
 .animal:hover {
     background-color: #ccc;
     cursor: pointer;
-}
+} */

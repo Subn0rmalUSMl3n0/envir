@@ -1,11 +1,50 @@
 <!DOCTYPE html>
+<style>/* Resetear estilos por defecto del navegador */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Estilos del cuerpo del documento */
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+    
+    /* Estilos del navegador */
+    nav {
+        background-color: #80c90b;
+    }
+    
+    ul#nave {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+    
+    ul#nave li {
+        margin: 0;
+    }
+    
+    ul#nave li a {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+    }
+    
+    ul#nave li a:hover {
+        color: #2E7D32; /* Verde oscuro */
+    }
+    </style>
 <body>
     <nav>
-        <ul>
+        <ul id="nave">
             <li><a class="nav" href="{% url 'home'%}">MAPA</a></li>
-            <li><a class="nav"href="{% url 'avistamientos'%}">AVISTAMIENTOS</a></li>
-            <li><a class="nav"href="{% url 'animales'%}">ANIMALES</a></li>
-            <li><a class="nav"href="{%url 'educativo'%}">EDUCATIVO</a></li>
+            <li><a class="nav" href="{% url 'avistamientos'%}">AVISTAMIENTOS</a></li>
+            <li><a class="nav" href="{% url 'animales'%}">ANIMALES</a></li>
+            <li><a class="nav" href="{%url 'educativo'%}">EDUCATIVO</a></li>
             
         </ul>
     </nav>

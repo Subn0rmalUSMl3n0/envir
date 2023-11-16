@@ -8,59 +8,143 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/educativo.css' %}">
     <title>Sección Educativa</title>
+    <style>
+    
+    /* Resetear estilos por defecto del navegador */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Resto de tu código CSS sigue aquí ... */
+
+        
+        /* Estilo del cuerpo del documento */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Estilo del encabezado */
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Estilo de la sección principal */
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        
+        /* Estilo de los bloques de recursos */
+        div {
+            width: 300px;
+            margin: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        /* Estilo de los enlaces dentro de los bloques */
+        div a {
+            text-decoration: none;
+            color: #0662cc;
+            font-weight: bold;
+        }
+        
+        /* Estilo de las imágenes dentro de los bloques */
+        div img {
+            max-width: 50%;
+            height: auto;
+        }
+        
+        /* Estilo de las listas ocultas */
+        ul {
+            list-style: none;
+        }
+        
+        /* Estilo de los enlaces dentro de las listas */
+        ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* Estilo de las listas ocultas */
+        .hidden {
+            display: none;
+        }
+        </style>
 </head>
 <body>
-    {% include 'mapap/navega.html' %}
-    
-    <header>
-        <h1>Recursos sobre Fauna Chilena</h1>
-    </header>
+        {% include 'mapap/navega.html' %}
+        
+        <header>
+            <h1>Recursos sobre Fauna Chilena</h1>
+        </header>
 
-    <section>
-        <div>
-            <a href="#graficos" class="image-link" onclick="toggleList('graficos')">
-                <h2>Gráficos</h2>
-                <img src="{% static '../static/img/grafico.png' %}" alt="imagen">
-            </a>
-            <ul id="graficos" class="hidden">
-                <li><a href="enlace-a-grafico-1">Gráfico 1</a></li>
-                <li><a href="enlace-a-grafico-2">Gráfico 2</a></li>
-            </ul>
-        </div>
+        <section>
+            <div>
+                <a href="#graficos" class="image-link" onclick="toggleList('graficos')">
+                    <h2>Gráficos</h2>
+                    <img src="{% static '../static/img/grafico.png' %}" alt="imagen">
+                </a>
+                <ul id="graficos" class="hidden">
+                    <li><a href="enlace-a-grafico-1">Gráfico 1</a></li>
+                    <li><a href="enlace-a-grafico-2">Gráfico 2</a></li>
+                </ul>
+            </div>
 
-        <div>
-            <a href="#campanas" class="image-link" onclick="toggleList('campanas')">
-                <h2>Campañas</h2>
-                <img src="{% static '../static/img/campaña.png' %}" alt="imagen">
-            </a>
-            <ul id="campanas" class="hidden">
-                <li><a href="enlace-a-campana-1">Campaña 1</a></li>
-                <li><a href="enlace-a-campana-2">Campaña 2</a></li>
-            </ul>
-        </div>
+            <div>
+                <a href="#campanas" class="image-link" onclick="toggleList('campanas')">
+                    <h2>Campañas</h2>
+                    <img src="{% static '../static/img/campaña.png' %}" alt="imagen">
+                </a>
+                <ul id="campanas" class="hidden">
+                    <li><a href="enlace-a-campana-1">Campaña 1</a></li>
+                    <li><a href="enlace-a-campana-2">Campaña 2</a></li>
+                </ul>
+            </div>
 
-        <div>
-            <a href="#articulos" class="image-link" onclick="toggleList('articulos')">
-                <h2>Artículos Informativos</h2>
-                <img src="{% static '../static/img/articulos.png' %}" alt="imagen">
-            </a>
-            <ul id="articulos" class="hidden">
-                <li><a href="enlace-a-articulo-1">Artículo 1</a></li>
-                <li><a href="enlace-a-articulo-2">Artículo 2</a></li>
-            </ul>
-        </div>
+            <div>
+                <a href="#articulos" class="image-link" onclick="toggleList('articulos')">
+                    <h2>Artículos Informativos</h2>
+                    <img src="{% static '../static/img/articulos.png' %}" alt="imagen">
+                </a>
+                <ul id="articulos" class="hidden">
+                    <li><a href="enlace-a-articulo-1">Artículo 1</a></li>
+                    <li><a href="enlace-a-articulo-2">Artículo 2</a></li>
+                </ul>
+            </div>
 
-        <div>
-            <a href="#videos" class="image-link" onclick="toggleList('videos')">
-                <h2>Videos</h2>
-                <img src="{% static '../static/img/videos.png' %}" alt="imagen">
-            </a>
-            <ul id="videos" class="hidden">
-                <li><a href="https://www.youtube.com/watch?v=DSgjo4vLN2w">Video 1</a></li>
-                <li><a href="enlace-a-video-2">Video 2</a></li>
-            </ul>
-        </div>
-    </section>
+            <div>
+                <a href="#videos" class="image-link" onclick="toggleList('videos')">
+                    <h2>Videos</h2>
+                    <img src="{% static '../static/img/videos.png' %}" alt="imagen">
+                </a>
+                <ul id="videos" class="hidden">
+                    <li><a href="https://www.youtube.com/watch?v=DSgjo4vLN2w">Video 1</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                    <li><a href="enlace-a-video-2">Video 2</a></li>
+                </ul>
+            </div>
+        </section>
 
     <script>
         function toggleList(id) {

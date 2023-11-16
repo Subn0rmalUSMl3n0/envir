@@ -1,54 +1,88 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <title>Avistamientos de Animales</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/avistamientos.css'%}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/avistamientos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css' %}">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        /* Encabezado */
+        h2 {
+            color: #609708;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Contenedor de comentarios */
+        .comentarios-container {
+            background-color: #088697;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden; /* Limpiar el float de la imagen */
+            margin: 20px; /* Agregar espacio alrededor de todos los comentarios */
+        }
+
+        /* Contenido del comentario */
+        .comentario p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.4;
+            padding: 15px;
+            margin: 0;
+        }
+
+        /* Autor y fecha en el comentario */
+        .comentario span.autor {
+            font-weight: bold;
+        }
+
+        .comentario span.fecha {
+            color: #555;
+        }
+
+        /* Imágenes en los comentarios */
+        .comentario img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Enlace para agregar comentario */
+        .agregar-comentario {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #609708;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     {% include "mapap/navega.html" %}
-    <header>
-        <h1>Registro de Avistamientos de Animales</h1>
-    </header>
-    
-    <div class="container">
-        <section class="avistamiento-form">
-            <h2>Registrar un Avistamiento</h2>
-            <form>
-                <label for="nombre">Nombre del animal:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                
-                <label for="especie">Especie:</label>
-                <input type="text" id="especie" name="especie" required>
-                
-                <label for="fecha">Fecha del avistamiento:</label>
-                <input type="date" id="fecha" name="fecha" required>
-                
-                <label for="ubicacion">Ubicación:</label>
-                <input type="text" id="ubicacion" name="ubicacion" required>
-                
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" required></textarea>
-                
-                <button type="submit">Registrar Avistamiento</button>
-            </form>
-        </section>
-        
-        <section class="avistamientos-list">
-            <h2>Lista de Avistamientos</h2>
-            <ul>
-                <li>
-                    <h3>Nombre del animal</h3>
-                    <p>Especie: Especie del animal</p>
-                    <p>Fecha del avistamiento: 01/01/2023</p>
-                    <p>Ubicación: Ubicación del avistamiento</p>
-                    <p>Descripción: Descripción del avistamiento</p>
-                </li>
-            </ul>
-        </section>
+    <h2>AVISTAMIENTOS:</h2>
+    <div class="comentarios-container">
+        {% for comentario in comentarios %}
+            <div class="comentario">
+                <p><span class="autor">{{ comentario.autor }}</span> ({{ comentario.fecha_publicacion }}): {{ comentario.contenido }}</p>
+                {% if comentario.foto %}
+                    <img src="{{ comentario.foto.url }}" alt="Foto del comentario">
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
-    
+    <a href="{% url 'agregar_comentario' %}" class="agregar-comentario">Agregar avistamiento</a>
 </body>
 </html>
+

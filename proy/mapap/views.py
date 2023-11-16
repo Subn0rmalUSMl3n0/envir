@@ -35,7 +35,7 @@ def home (request):
                             min_lon=min_lon,
                             max_lon=max_lon,
                             ) 
-       #BOUNDS MAPA
+       #BOUNDS MAPAs
     folium.CircleMarker([max_lat, min_lon], tooltip="Upper Left Corner").add_to(m)
     folium.CircleMarker([min_lat, min_lon], tooltip="Lower Left Corner").add_to(m)
     folium.CircleMarker([min_lat, max_lon], tooltip="Lower Right Corner").add_to(m)

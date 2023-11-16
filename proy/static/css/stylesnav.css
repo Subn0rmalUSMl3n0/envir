@@ -5,7 +5,7 @@ nav {
     font-size: 18px; /* Tamaño de fuente */
 }
 
-ul {
+.nave {
     list-style-type: none; /* Quita los puntos de la lista */
     padding: 0; /* Elimina el relleno predeterminado */
     margin: 0; /* Elimina el margen predeterminado */
