@@ -1,14 +1,15 @@
+# mapap/views.py
 from django.shortcuts import render
-import os
 import folium
-from folium.plugins import geocoder
 import pandas as pd
+import folium
+from django.conf import settings
+from django.shortcuts import render
 from shapely import wkt
 from shapely.geometry import Polygon
-from glob import glob
-
 min_lon, max_lon = -76, -65
 min_lat, max_lat = -56, -17
+
 
 def create_polygon_from_wkt(wkt_string):
     # Crea una geometría de tipo Polygon a partir de una cadena WKT
@@ -18,12 +19,11 @@ def create_polygon_from_wkt(wkt_string):
         geom = Polygon(geom)
     return geom
 
-def home (request):
-    # Directorio donde se encuentran los archivos CSV
-    csv_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'csv_files')
+def cargar_y_mostrar_csv(request, csv_file_path, i):
+    # Leer datos CSV con pandas
+    df = pd.read_csv(csv_file_path)
 
-        
-    #AJUSTES MAPA
+    # Crear mapa
     m= folium.Map(location=[-36.552302, -71.889792],
                             zoom_start= 2,
                             zoom_control=False,
@@ -34,23 +34,9 @@ def home (request):
                             max_lat=max_lat,
                             min_lon=min_lon,
                             max_lon=max_lon,
-                            ) 
-       #BOUNDS MAPAs
-    folium.CircleMarker([max_lat, min_lon], tooltip="Upper Left Corner").add_to(m)
-    folium.CircleMarker([min_lat, min_lon], tooltip="Lower Left Corner").add_to(m)
-    folium.CircleMarker([min_lat, max_lon], tooltip="Lower Right Corner").add_to(m)
-    folium.CircleMarker([max_lat, max_lon], tooltip="Upper Right Corner").add_to(m)
-    
-    # Iterar a través de los archivos CSV en la carpeta
-    for csv_file in glob(os.path.join(csv_dir, '*.csv')):
-        # Cargar el archivo CSV con pandas
-        df = pd.read_csv(csv_file)
-
-# Crear un FeatureGroup para este archivo CSV
-        fg = folium.FeatureGroup(name=os.path.basename(csv_file), show=False).add_to(m)
-
-        # Iterar a través de las filas del DataFrame
-        for index, row in df.iterrows():
+                            )
+    # Iterar sobre las filas y manejar errores en la conversión de geometrías
+    for index, row in df.iterrows():
             # Obtener la geometría en formato WKT desde la columna "WKT"
             wkt_string = row['WKT']
 
@@ -61,18 +47,38 @@ def home (request):
             folium.GeoJson(
                 geom.__geo_interface__,
                 style_function=lambda x: {'fillColor': 'red', 'fillOpacity': 0.5, 'color': 'cyan', 'weight':0.5},
-            ).add_to(fg)
-    folium.LayerControl().add_to(m)
-    
-    
-    #PLUGINS Y DEMAS
-    folium.plugins.Geocoder().add_to(m)
-    
-    
-    context = {'mapap': m._repr_html_()}
-    
-    return render(request,'mapap/home.html', context)
-    # Create your views here.
+            ).add_to(m)
+
+    # Convertir el mapa a HTML
+    m_html = m._repr_html_()
+
+    m_datos = {"m" + str(i) + "_html": m_html}
+    print('mapas/mapa' + str(i) + '.html')
+    print('m' + str(i) + '_html')
+    return render(request, 'mapas/mapa' + str(i) + '.html', {'m' + str(i) + '_datos': m_datos})
+
+def mapa0(request):
+    # Ruta al archivo CSV
+    csv_file_path = settings.BASE_DIR / 'mapap' / 'csv_files' / 'AAAAA BASE.csv'
+    i=0
+    # Llamar a la función para cargar y mostrar el CSV en el mapa
+    return cargar_y_mostrar_csv(request, csv_file_path,i)
+
+def mapa1(request):
+    # Ruta al archivo CSV
+    csv_file_path = settings.BASE_DIR / 'mapap' / 'csv_files' / 'Alpaca.csv'
+    i=1
+    # Llamar a la función para cargar y mostrar el CSV en el mapa
+    return cargar_y_mostrar_csv(request, csv_file_path,i)
+
+
+
+def mapa2(request):
+    # Ruta al archivo CSV
+    csv_file_path = settings.BASE_DIR / 'mapap' / 'csv_files' / 'Chuncho del Norte.csv'
+    i=2
+    # Llamar a la función para cargar y mostrar el CSV en el mapa
+    return cargar_y_mostrar_csv(request, csv_file_path,i)
 
 
 def avistamientos(request):

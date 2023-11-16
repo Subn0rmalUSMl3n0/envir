@@ -1,18 +1,24 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Título Predeterminado{% endblock %}</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css' %}">
-    <style></style>
-    <title>Mapa Django Test</title>
+    <!-- Agrega el script de Folium -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css"
+        integrity="sha512-cUkEofb6z6O5/Dw7AnQgY44/LWGBjGgB20GJ4jb6U2qJX0MWBp9+e6fXbt8+B/T6GjzVUxfubAmYuW3hAXzgFA=="
+        crossorigin=""
+    />
+    <script
+        src="https://unpkg.com/leaflet/dist/leaflet.js"
+        integrity="sha512-+TkL6Q7P6Vu+7FOe1j2zomkN8l+L8hBYRv6SoLw/QvR8hK5QwNsm9iuqBXPHxxfo0VHL8jbq7PBhrG8bB1IZDfA=="
+        crossorigin=""
+    ></script>
 </head>
 <body>
     {% include 'mapap/navega.html' %}
@@ -28,5 +34,19 @@
     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function cargarMapa(vista) {
+            fetch('/' + vista + '/')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
+
 </body>
 </html>

@@ -1,0 +1,50 @@
+{% extends 'mapap/base.html'%}
+
+{% block content %}
+<!-- mapap/mapas/mapa2.html -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<div id="content">
+
+    <!-- Div para el mapa a la izquierda -->
+    <div id="map-container" style="float: left; width: 70%;">
+        <!-- Mostrar el HTML del mapa -->
+        {{ m0_datos.m0_html | safe }}
+    </div>
+
+    <!-- Segundo hiperenlace para cargar Mapa 3 -->
+    <a href="{% url 'home' %}">Volver al mapa inicial</a>
+    <a href="#" id="cargar-mapa1">Alpaca</a>
+    <a href="#" id="cargar-mapa2">Chuncho Del Norte</a>
+
+    <!-- Script para cargar el contenido del div izquierdo mediante AJAX -->
+    <script>
+        // Función para cargar el contenido del div izquierdo
+        function cargarDivIzquierdo(url) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data) {
+                    $('#map-container').html(data);  // Actualiza el contenido del div izquierdo
+                },
+                error: function(error) {
+                    console.log('Error al cargar el contenido del div izquierdo:', error);
+                }
+            });
+        }
+
+        // Cargar contenido del div izquierdo al hacer clic en el segundo hiperenlace
+        $('#cargar-mapa1').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa1" %}');
+        });
+        $('#cargar-mapa2').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa2" %}');
+        });
+
+    </script>
+</div>
+
+
+{% endblock %}
