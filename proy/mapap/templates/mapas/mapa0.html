@@ -16,6 +16,18 @@
     <a href="{% url 'home' %}">Volver al mapa inicial</a>
     <a href="#" id="cargar-mapa1">Alpaca</a>
     <a href="#" id="cargar-mapa2">Chuncho Del Norte</a>
+    <a href="#" id="cargar-mapa3">Cóndor</a>
+    <a href="#" id="cargar-mapa4">Sietecolores</a>
+    <a href="#" id="cargar-mapa5">Laguito animal</a>
+    <a href="#" id="cargar-mapa6">Lobo Marino</a>
+    <a href="#" id="cargar-mapa7">Monito del monte</a>
+    <a href="#" id="cargar-mapa8">Murcielago Orejón</a>
+    <a href="#" id="cargar-mapa9">Pudú</a>
+    <a href="#" id="cargar-mapa10">Puma</a>
+    <a href="#" id="cargar-mapa11">Vicuña</a>
+    <a href="#" id="cargar-mapa12">Zorro Gris</a>
+
+
 
     <!-- Script para cargar el contenido del div izquierdo mediante AJAX -->
     <script>
@@ -42,6 +54,47 @@
             e.preventDefault();
             cargarDivIzquierdo('{% url "mapa2" %}');
         });
+        $('#cargar-mapa3').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa3" %}');
+        });
+        $('#cargar-mapa4').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa4" %}');
+        });
+        $('#cargar-mapa5').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa5" %}');
+        });
+        $('#cargar-mapa6').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa6" %}');
+        });
+        $('#cargar-mapa7').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa7" %}');
+        });
+        $('#cargar-mapa8').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa8" %}');
+        });
+        $('#cargar-mapa9').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa9" %}');
+        });
+        $('#cargar-mapa10').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa10" %}');
+        });
+        $('#cargar-mapa11').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa11" %}');
+        });
+        $('#cargar-mapa12').on('click', function(e) {
+            e.preventDefault();
+            cargarDivIzquierdo('{% url "mapa12" %}');
+        });
+
 
     </script>
 </div>

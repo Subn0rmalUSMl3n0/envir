@@ -1,7 +1,12 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <title>Animales</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animales.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css'%}">
+    
+    <script src="https://unpkg.com/clipboard-polyfill@2.8.0/dist/clipboard-polyfill.promise.js"></script>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Avistamientos</title>
     <style>
@@ -53,15 +58,41 @@
         a:hover {
             text-decoration: underline;
         }
+
+        map-container {
+            width: 60%;
+            height: 400px;
+            float: left;
+            margin-right: 20px;
+        }
+        
+        map-container img {
+            max-width: none;  /* Evitar que Leaflet restrinja el ancho del mapa */
+        }
+        
     </style>
+    <script src="https://unpkg.com/clipboard@2.0.12/dist/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384-MfsTeDr5Dp3szndkxig+IkF43+cZ2v4z9uX2+r/46FSpLO2LhYgP+NzLO9xvb1hm" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/folium@0.14.0/folium.css" integrity="sha384-vnk5qEUABhFWSKGT9OlRP6LnhoFB6PkgUHx2bUUEiqzkyZukl3KzA/g1ySN64he" crossorigin=""/>
 </head>
 <body>
+    {% include "mapap/navega.html" %}
     <h2>Agregar Avistamiento:</h2>
     <form method="post" action="{% url 'agregar_comentario' %}">
         {% csrf_token %}
         {{ form.as_p }}
+
+
         <button type="submit">Guardar Avistamiento</button>
     </form>
-    <a href="{% url 'listar_comentarios' %}">Volver a la lista de avistamientos</a>
+    
+    <div id="map" class="map-container" style= "height:200px;">
+        {{ mapap | safe }}
+        <a href="{% url 'listar_comentarios' %}">Volver a la lista de avistamientos</a>
+    </div>
+
+
+
+
 </body>
 </html>
