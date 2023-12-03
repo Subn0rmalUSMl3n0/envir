@@ -82,14 +82,41 @@ DATABASES = {
     }
 }
 
-DATABASES['mysql'] = {
-    'ENGINE': 'mysql.connector.django',
-    'NAME': 'planets_ally',
-    'USER': 'root',
-    'PASSWORD': 'admin1234',
-    'HOST': 'localhost',
-    'PORT': '3306',
+# settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'planets_ally',
+        'USER': 'root',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    'mapap_db': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'planets_ally',
+        'USER': 'root',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    'comentarios_db': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'planets_ally',
+        'USER': 'root',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
 }
+
+# settings.py
+
+# settings.py
+
+DATABASE_ROUTERS = ['mapap.routers.MapapRouter', 'comentarios.routers.ComentariosRouter']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

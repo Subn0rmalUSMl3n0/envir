@@ -5,64 +5,16 @@
     <title>Animales</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/animales.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/stylesnav.css'%}">
+
 </head>
 <body>
     {% include "mapap/navega.html" %}
     <header>
         <h1>Lista de Animales</h1>
     </header>
-    <div class="buscar-form">
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ form }}
-            <input class="mostrar-mas" type="submit" value="Buscar">
-        </form>
+    <div>
+        hola
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Habitad</th>
-                <th>Información</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for dato in datos %}
-                <tr>
-                    <td>{{ dato.nombre }}</td>
-                    <td>{{ dato.habitad }}</td>
-                    <td>{{ dato.resumen }}</td>
-                    <td>
-                        <button class="mostrar-mas" data-animal-id="{{ dato.id_inf }}">Más</button>
-                        <div class="detalles" id="detalles-{{ dato.id_inf }}" style="display: none;">
-                            <p>Información: {{ dato.informacion }}</p>
-                            <img src="{{ dato.imagen }}" alt="{{ dato.nombre }}">
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
 </body>
 </html>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const botonesMas = document.querySelectorAll(".mostrar-mas");
-
-        botonesMas.forEach(function (boton) {
-            boton.addEventListener("click", function () {
-                const animalId = boton.getAttribute("data-animal-id");
-                const detalles = document.getElementById("detalles-" + animalId);
-
-                // Alternar la visibilidad de los detalles
-                if (detalles.style.display === "none") {
-                    detalles.style.display = "block";
-                    boton.textContent = "Menos";
-                } else {
-                    detalles.style.display = "none";
-                    boton.textContent = "Más";
-                }
-            });
-        });
-    });
-</script>

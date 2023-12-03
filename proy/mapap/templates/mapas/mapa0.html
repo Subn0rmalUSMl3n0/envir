@@ -1,31 +1,41 @@
 {% extends 'mapap/base.html'%}
 
 {% block content %}
-<!-- mapap/mapas/mapa2.html -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <div id="content">
 
-    <!-- Div para el mapa a la izquierda -->
     <div id="map-container" style="float: left; width: 70%;">
-        <!-- Mostrar el HTML del mapa -->
         {{ m0_datos.m0_html | safe }}
     </div>
 
-    <!-- Segundo hiperenlace para cargar Mapa 3 -->
     <a href="{% url 'home' %}">Volver al mapa inicial</a>
-    <a href="#" id="cargar-mapa1">Alpaca</a>
-    <a href="#" id="cargar-mapa2">Chuncho Del Norte</a>
+    <a href="#" class="cargar-mapa" data-map="mapa1" data-lat="-22.958393" data-lng="-68.653564">Alpaca</a>
+    <a href="#" class="cargar-mapa" data-map="mapa2" data-lat="-18.719097" data-lng="-70.246582">Chuncho Del Norte</a>
+    <a href="#" class="cargar-mapa" data-map="mapa3" data-lat="-30.666266" data-lng="-70.532227">Cóndor</a>
+    <a href="#" class="cargar-mapa" data-map="mapa4" data-lat="-41.071069" data-lng="-73.245850">Sietecolores</a>
+    <a href="#" class="cargar-mapa" data-map="mapa5" data-lat="-41.525030" data-lng="-71.949463">Laguito animal</a>
+    <a href="#" class="cargar-mapa" data-map="mapa6" data-lat="-43.524655" data-lng="-74.190674">Lobo Marino</a>
+    <a href="#" class="cargar-mapa" data-map="mapa7" data-lat="-38.933776" data-lng="-72.026367">Monito del monte</a>
+    <a href="#" class="cargar-mapa" data-map="mapa8" data-lat="-40.738933" data-lng="-72.872314">Murcielago Orejón</a>
+    <a href="#" class="cargar-mapa" data-map="mapa9" data-lat="-42.354485" data-lng="-73.894043">Pudú</a>
+    <a href="#" class="cargar-mapa" data-map="mapa10" data-lat="-33.174426" data-lng="-70.762937">Puma</a>
+    <a href="#" class="cargar-mapa" data-map="mapa11" data-lat="-23.160563" data-lng="-67.445068">Vicuña</a>
+    <a href="#" class="cargar-mapa" data-map="mapa12" data-lat="-45.151053" data-lng="-72.333984">Zorro Gris</a>
 
-    <!-- Script para cargar el contenido del div izquierdo mediante AJAX -->
     <script>
-        // Función para cargar el contenido del div izquierdo
-        function cargarDivIzquierdo(url) {
+        function cargarDivIzquierdo(url, lat, lng) {
             $.ajax({
                 url: url,
                 type: 'GET',
                 success: function(data) {
-                    $('#map-container').html(data);  // Actualiza el contenido del div izquierdo
+                    $('#map-container').html(data);
+
+                    // Configurar el mapa después de cargar el contenido
+                    var map = L.map('map0');
+                    map.setView([lat, lng], 2);
+
+                    // Resto del código para inicializar y configurar el mapa...
                 },
                 error: function(error) {
                     console.log('Error al cargar el contenido del div izquierdo:', error);
@@ -33,18 +43,14 @@
             });
         }
 
-        // Cargar contenido del div izquierdo al hacer clic en el segundo hiperenlace
-        $('#cargar-mapa1').on('click', function(e) {
+        $('.cargar-mapa').on('click', function(e) {
             e.preventDefault();
-            cargarDivIzquierdo('{% url "mapa1" %}');
+            var map = $(this).data('map');
+            var lat = $(this).data('lat');
+            var lng = $(this).data('lng');
+            cargarDivIzquierdo('/' + map + '/', lat, lng);
         });
-        $('#cargar-mapa2').on('click', function(e) {
-            e.preventDefault();
-            cargarDivIzquierdo('{% url "mapa2" %}');
-        });
-
     </script>
 </div>
-
 
 {% endblock %}
