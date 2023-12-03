@@ -7,6 +7,10 @@ from django.conf import settings
 from django.shortcuts import render
 from shapely import wkt
 from shapely.geometry import Polygon
+from .models import Inf_animales
+from .forms import BusquedaForm
+from django.db.models import Q
+
 min_lon, max_lon = -76, -65
 min_lat, max_lat = -56, -17
 
@@ -136,7 +140,22 @@ def home2 (request):
 
 def avistamientos(request):
     return render(request,'mapap/avistamientos.html')
+
 def animales(request):
-    return render (request,"mapap/animales.html")
+    datos = Inf_animales.objects.using('mysql').all()
+    form = BusquedaForm()
+
+    if request.method == 'POST':
+        form = BusquedaForm(request.POST)
+        if form.is_valid():
+            termino_busqueda = form.cleaned_data['termino_busqueda']
+            if termino_busqueda:
+                datos = datos.filter(
+                    Q(nombre__icontains=termino_busqueda) | 
+                    Q(habitad__icontains=termino_busqueda)
+                )
+
+    return render (request,"mapap/animales.html", {'datos': datos, 'form':form})
+
 def educativo (request):
     return render (request,'mapap/educativo.html')
