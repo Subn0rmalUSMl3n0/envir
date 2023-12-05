@@ -1,22 +1,100 @@
-<!-- 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Listar Comentarios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Avistamientos</title>
     <style>
-        p{
-            color: #fa0000;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h2 {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(76, 175, 80, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px; /* Espacio adicional entre el formulario y el botón */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #comentarios-list {
+            margin: 20px;
+        }
+
+        #comentarios-list h2 {
+            color: #007BFF;
+        }
+
+        #comentarios-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #comentarios-list li {
+            margin-bottom: 10px;
+        }
+
+        #map-container {
+            height: 600px; /* Ajusta la altura del mapa según sea necesario */
+            width: 70%; /* Ajusta el ancho del mapa según sea necesario */
+            margin: 20px auto 40px; /* Centra el mapa en la página */
         }
     </style>
 </head>
 <body>
-    <h2>listar_comentarios:</h2>
 
-    {% for comentario in comentarios %}
-        <p>{{ comentario.autor }} ({{ comentario.fecha_publicacion }}): {{ comentario.contenido }}</p>
-    {% endfor %}
-    <a href="{% url 'agregar_comentario' %}">Agregar Comentario</a>
+    {% include "mapap/navega.html" %}
+    <h2>AVISTAMIENTOS</h2>
+    <div id="comentarios-list">
+        <h2>Comentarios:</h2>
+        <ul>
+            {% for comentario in comentarios %}
+                <li>{{ comentario.autor }} - {{ comentario.fecha_publicacion }} - {{ comentario.contenido }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="map-container">
+        {{ mapa | safe }}
+    </div>
+
+    <a href="{% url 'agregar_comentario' %}" class="agregar-comentario">Agregar avistamiento</a>
 </body>
 </html>
--->
-

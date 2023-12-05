@@ -22,8 +22,8 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Habitad</th>
-                <th>Información</th>
+                <th>Hábitat</th>
+                <th>Estado de Conservación</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ dato.nombre }}</td>
                     <td>{{ dato.habitad }}</td>
-                    <td>{{ dato.resumen }}</td>
+                    <td>{{ dato.estado_conservacion }}</td>
                     <td>
                         <button class="mostrar-mas" data-animal-id="{{ dato.id_inf }}">Más</button>
                         <div class="detalles" id="detalles-{{ dato.id_inf }}" style="display: none;">

@@ -36,14 +36,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        function cargarMapa(vista) {
+        function cargarMapa(vista, latitud, longitud) {
             fetch('/' + vista + '/')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
+        
+                    // Establecer las coordenadas iniciales después de cargar el mapa
+                    var initialCoords = [latitud, longitud];
+                    var map = folium.Map('map0').setView(initialCoords, 2);
+        
+                    // Agregar capa de mosaico (usando tiles de CartoDB Positron)
+                    folium.TileLayer(
+                        'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+                        {
+                            attribution: '© OpenStreetMap contributors, CartoDB'
+                        }
+                    ).addTo(map);
+        
+                    // Iterar sobre las filas y manejar errores en la conversión de geometrías
+                    // Aquí asumo que los datos están disponibles en algún lugar en la página HTML,
+                    // puedes ajustar según tus necesidades.
+                    var geoJsonData = /* Obtener tus datos GeoJSON aquí */;
+        
+                    // Agregar la capa GeoJson al mapa
+                    folium.GeoJson(geoJsonData, {
+                        style: function (feature) {
+                            return {
+                                fillColor: 'red',
+                                fillOpacity: 0.5,
+                                color: 'cyan',
+                                weight: 0.5
+                            };
+                        }
+                    }).addTo(map);
+        
+                    // Agregar plugins
+                    folium.plugins.Geocoder().addTo(map);
+                    folium.plugins.LocateControl({ autoStart: false }).addTo(map);
+        
+                    // Agregar Popup de coordenadas
+                    var latLngPopup = folium.ClickForLatLng({ format_str: '"[" + lat + "," + lng +"]"', alert: false });
+                    map.add_child(latLngPopup);
                 })
                 .catch(error => console.error(error));
         }
+        
     </script>
 </body>
 </html>

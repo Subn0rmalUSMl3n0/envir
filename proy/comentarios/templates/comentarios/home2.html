@@ -1,0 +1,11 @@
+{% extends 'comentarios/agregar_comentario.html' %}
+
+{% block content %}
+    {{ mapa|safe }}
+{% endblock %}
+
+{% block scripts %}
+    <!-- Scripts de Leaflet y Folium -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384-bwaqPkE4xA2h9n0q68eL1wLrKc7bULs7FXYwSMsdW8jDwiRNzjkyN5zv5VZhRR8M" crossorigin=""></script>
+    <script src="https://unpkg.com/folium@0.14.0/folium.js" integrity="sha384-2F9ZypEMaXMKUnL00UHtdSMOuQA4/rqkWtby5jRGZv+eAUsqajxlA/g1YIkMtKYY" crossorigin=""></script>
+{% endblock %}
