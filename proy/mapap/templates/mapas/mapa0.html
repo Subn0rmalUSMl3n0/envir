@@ -2,31 +2,121 @@
 
 {% block content %}
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
 
-<div id="content">
+    section {
+        display: flex;
+        height: 100vh;
+    }
 
-    <div id="map-container" style="float: left; width: 70%;">
-        {{ m0_datos.m0_html | safe }}
+    .iz {
+        width: 260%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .der {
+        width: 50%;
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    #map-container {
+        width: 100%;
+    }
+
+    h2 {
+        text-align: center;
+        color: #007BFF;
+    }
+
+    .animal-list li {
+        margin-bottom: 10px; /* Añadir espacio entre elementos de la lista */
+    }
+
+    .animal-box {
+        padding: 10px;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        transition: all 0.3s ease; /* Transición suave para todos los cambios */
+    }
+
+    .animal-box:hover {
+        background-color: #000000; /* Cambia el color al pasar el cursor */
+        transform: scale(1.1); /* Agranda un poco al pasar el cursor */
+    }
+
+    .animal-list li {
+        background-color:#228B22;
+        border-radius: 5px;
+        overflow: hidden; /* Evita que los bordes redondeados afecten al enlace */
+    }
+
+    .animal-list li:hover .animal-box {
+        background-color: #228B22; /* Cambiar el color de fondo al pasar el cursor */
+    }
+
+    .animal-list li a {
+        display: block;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 1em;
+        padding: 10px; /* Añadir relleno al enlace para hacer clic en el área del fondo */
+        transition: color 0.3s ease, font-size 0.3s ease; /* Agregar transición para el color y tamaño de fuente */
+    }
+
+    .animal-list li:hover a {
+        text-decoration: none;
+        color: #a5e0a8; /* Cambiar el color al pasar el cursor a rojo */
+        font-size: 1.2em;
+    }
+    .cargar-mapa {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .cargar-mapa:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<section id="content">
+    <div class="iz">
+            <div id="map-container">
+            {{ m0_datos.m0_html | safe }}
+            </div>
     </div>
-
-    <div id="sidebar" style="float: left; width: 30%; padding: 30px;">
-        <h2>Animales</h2>
-        <ul class="animal-list">
-            <li><a href="#" class="cargar-mapa" data-map="mapa1" data-lat="-22.958393" data-lng="-68.653564">Alpaca</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa2" data-lat="-18.719097" data-lng="-70.246582">Chuncho Del Norte</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa3" data-lat="-30.666266" data-lng="-70.532227">Cóndor</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa4" data-lat="-41.071069" data-lng="-73.245850">Sietecolores</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa5" data-lat="-41.525030" data-lng="-71.949463">Laguito animal</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa6" data-lat="-43.524655" data-lng="-74.190674">Lobo Marino</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa7" data-lat="-38.933776" data-lng="-72.026367">Monito del monte</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa8" data-lat="-40.738933" data-lng="-72.872314">Murcielago Orejón</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa9" data-lat="-42.354485" data-lng="-73.894043">Pudú</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa10" data-lat="-33.174426" data-lng="-70.762937">Puma</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa11" data-lat="-23.160563" data-lng="-67.445068">Vicuña</a></li>
-            <li><a href="#" class="cargar-mapa" data-map="mapa12" data-lat="-45.151053" data-lng="-72.333984">Zorro Gris</a></li>
-            <!-- Agrega más animales según sea necesario -->
-        </ul>
+    <div class="der">
+        <div id="sidebar" >
+            <h2>Animales</h2>
+            <ul class="animal-list">
+                <li><a href="#" class="cargar-mapa" data-map="mapa1" data-lat="-22.958393" data-lng="-68.653564">Alpaca</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa2" data-lat="-18.719097" data-lng="-70.246582">Chuncho Del Norte</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa3" data-lat="-30.666266" data-lng="-70.532227">Cóndor</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa4" data-lat="-41.071069" data-lng="-73.245850">Sietecolores</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa5" data-lat="-41.525030" data-lng="-71.949463">Laguito animal</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa6" data-lat="-43.524655" data-lng="-74.190674">Lobo Marino</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa7" data-lat="-38.933776" data-lng="-72.026367">Monito del monte</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa8" data-lat="-40.738933" data-lng="-72.872314">Murcielago Orejón</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa9" data-lat="-42.354485" data-lng="-73.894043">Pudú</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa10" data-lat="-33.174426" data-lng="-70.762937">Puma</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa11" data-lat="-23.160563" data-lng="-67.445068">Vicuña</a></li>
+                <li><a href="#" class="cargar-mapa" data-map="mapa12" data-lat="-45.151053" data-lng="-72.333984">Zorro Gris</a></li>
+                <!-- Agrega más animales según sea necesario -->
+            </ul>
+        </div>
     </div>
+</section>
 
     <script>
         function cargarDivIzquierdo(url, lat, lng) {

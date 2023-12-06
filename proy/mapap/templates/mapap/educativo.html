@@ -30,8 +30,7 @@
         
         /* Estilo del encabezado */
         header {
-            background-color: #007BFF;
-            color: #fff;
+            color: #007BFF;
             text-align: center;
             padding: 20px;
         }
@@ -66,6 +65,10 @@
         div img {
             max-width: 50%;
             height: auto;
+            transition: filter 0.3s ease;
+        }
+        div:hover {
+            transform: scale(1.2); /* Puedes ajustar el valor según tus preferencias */
         }
         
         /* Estilo de las listas ocultas */
@@ -77,8 +80,11 @@
         ul li a {
             text-decoration: none;
             color: #333;
+            transition: color 0.3s ease;
         }
-        
+        ul li a:hover {
+            color: #66a3ff; /* Puedes ajustar el color según tus preferencias */
+        }
         /* Estilo de las listas ocultas */
         .hidden {
             display: none;
@@ -99,8 +105,8 @@
                     <img src="{% static '../static/img/grafico.png' %}" alt="imagen">
                 </a>
                 <ul id="graficos" class="hidden">
-                    <li><a href="enlace-a-grafico-1">Gráfico 1</a></li>
-                    <li><a href="enlace-a-grafico-2">Gráfico 2</a></li>
+                    <li><a href="https://mma.gob.cl/wp-content/uploads/2017/08/Librillo-Fauna.pdf">Gráfico 1</a></li>
+                    <li><a href="https://www.researchgate.net/figure/Figura-1-Graficos-de-abundancia-y-numero-de-especies-de-fauna-por-unidades-a-lo-largo-de_fig1_282327422">Gráfico 2</a></li>
                 </ul>
             </div>
 
@@ -110,7 +116,7 @@
                     <img src="{% static '../static/img/campaña.png' %}" alt="imagen">
                 </a>
                 <ul id="campanas" class="hidden">
-                    <li><a href="enlace-a-campana-1">Campaña 1</a></li>
+                    <li><a href="https://mma.gob.cl/lanzan-campana-por-la-preservacion-de-la-fauna-local/">Campaña 1</a></li>
                     <li><a href="enlace-a-campana-2">Campaña 2</a></li>
                 </ul>
             </div>
@@ -121,8 +127,8 @@
                     <img src="{% static '../static/img/articulos.png' %}" alt="imagen">
                 </a>
                 <ul id="articulos" class="hidden">
-                    <li><a href="enlace-a-articulo-1">Artículo 1</a></li>
-                    <li><a href="enlace-a-articulo-2">Artículo 2</a></li>
+                    <li><a href="https://www.florayfauna.cl/publicaciones/articulos">Artículo 1</a></li>
+                    <li><a href="https://www.sag.gob.cl/ambitos-de-accion/fauna">Artículo 2</a></li>
                 </ul>
             </div>
 
@@ -133,14 +139,6 @@
                 </a>
                 <ul id="videos" class="hidden">
                     <li><a href="https://www.youtube.com/watch?v=DSgjo4vLN2w">Video 1</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
-                    <li><a href="enlace-a-video-2">Video 2</a></li>
                     <li><a href="enlace-a-video-2">Video 2</a></li>
                 </ul>
             </div>

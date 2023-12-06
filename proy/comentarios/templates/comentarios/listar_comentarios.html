@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <!-- Configuración del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Avistamientos</title>
+
+    <!-- Estilos CSS -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,9 +17,24 @@
             color: #333;
         }
 
-        h2 {
-            color: #ffffff;
-            text-align: center;
+        #panta_div {
+            display: flex;
+        }
+
+        .izquierda {
+            height: 100vh;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box; /* Evita que el padding afecte al ancho total */
+            overflow-y: auto; /* Agrega desplazamiento vertical si el contenido es largo */
+        }
+
+        .derecha {
+            background-color: #f4f7f1;
+            width: 50%;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box; /* Evita que el padding afecte al ancho total */
         }
 
         form {
@@ -36,19 +55,24 @@
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
-            margin-top: 20px; /* Espacio adicional entre el formulario y el botón */
+            margin-top: 20px;
         }
 
         button:hover {
             background-color: #45a049;
         }
 
-        a {
+        #agregar {
             display: block;
             margin-top: 20px;
             color: #007BFF;
             text-decoration: none;
             text-align: center;
+        }
+
+        #agregar:hover {
+            font-size: 1em;
+            color: #0056b3;
         }
 
         a:hover {
@@ -61,40 +85,70 @@
 
         #comentarios-list h2 {
             color: #007BFF;
+            text-align: center;
+            margin-bottom: 20px; /* Espacio adicional después del título */
         }
 
         #comentarios-list ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         #comentarios-list li {
+            border-bottom: 1px solid #ddd; /* Línea separadora entre comentarios */
+            padding-bottom: 20px; /* Espacio después de cada comentario */
+            margin-bottom: 20px;
+        }
+
+        .comentario-autor {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comentario-fecha {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .comentario-contenido {
             margin-bottom: 10px;
         }
 
         #map-container {
-            height: 600px; /* Ajusta la altura del mapa según sea necesario */
-            width: 70%; /* Ajusta el ancho del mapa según sea necesario */
-            margin: 20px auto 40px; /* Centra el mapa en la página */
+            height: 100%;
+            width: 100%;
+            margin: 20px auto 40px;
         }
     </style>
+
 </head>
+
 <body>
 
     {% include "mapap/navega.html" %}
-    <h2>AVISTAMIENTOS</h2>
-    <div id="comentarios-list">
-        <h2>Comentarios:</h2>
-        <ul>
-            {% for comentario in comentarios %}
-                <li>{{ comentario.autor }} - {{ comentario.fecha_publicacion }} - {{ comentario.contenido }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div id="map-container">
-        {{ mapa | safe }}
-    </div>
+    <section id="panta_div">
+        <div class="izquierda">
+            <div id="comentarios-list">
+                <h2>Lista de Avistamientos</h2>
+                <ul>
+                    {% for comentario in comentarios %}
+                        <li>
+                            <div class="comentario-autor">{{ comentario.autor }} hecho el {{ comentario.fecha_publicacion }}</div>
+                            <div class="comentario-contenido">{{ comentario.contenido }}</div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a id="agregar" href="{% url 'agregar_comentario' %}" class="agregar-comentario">Agregar nuevo avistamiento</a>
+            </div>
+        </div>
+        <div class="derecha">
+            <div id="map-container">
+                {{ mapa | safe }}
+            </div>
+        </div>
+    </section>
 
-    <a href="{% url 'agregar_comentario' %}" class="agregar-comentario">Agregar avistamiento</a>
 </body>
+
 </html>

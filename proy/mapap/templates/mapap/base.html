@@ -19,20 +19,14 @@
         integrity="sha512-+TkL6Q7P6Vu+7FOe1j2zomkN8l+L8hBYRv6SoLw/QvR8hK5QwNsm9iuqBXPHxxfo0VHL8jbq7PBhrG8bB1IZDfA=="
         crossorigin=""
     ></script>
+    <style>
+
+    </style>
 </head>
 <body>
     {% include 'mapap/navega.html' %}
-    
-    <section id="pantalla-div">
-        <div class="izquierda">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <div class="derecha">
-            <div class="lista"></div>
-        </div>
-    </section>
-    
+    {% block content %}
+    {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
